@@ -22,6 +22,7 @@ import culocartas.Palos;
 public class Barajador {
     private ArrayList<Carta> baraja = new ArrayList();
     private Barajador instance = new Barajador();
+    private ArrayList<Player> jugadores = new ArrayList();
     
     public Barajador getInstance(){
         return instance;
@@ -59,5 +60,16 @@ public class Barajador {
     private void barajar(){
         long seed = System.nanoTime();
         Collections.shuffle(baraja, new Random(seed));
+    }
+    
+    public void repartir(int numero_jugadores){
+        while(!baraja.isEmpty()){
+            for(int j=0; j<52; j++){
+                for(int i=0; i<numero_jugadores; i++){
+                    jugadores.get(i).recibirCarta(baraja.get(j));
+                    baraja.remove(j);
+                }
+            }
+        }
     }
 }

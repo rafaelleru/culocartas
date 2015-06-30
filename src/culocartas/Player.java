@@ -35,4 +35,8 @@ public class Player {
     public Carta getCarta(int i){
         return mano.get(i);
     }
+    
+    public void recibirCarta(Carta c){
+        mano.add(c);
+    }
 }
